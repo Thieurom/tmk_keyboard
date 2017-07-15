@@ -22,16 +22,16 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * |Contro|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Enter   |
      * |-----------------------------------------------------------|
-     * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift |Fn1|
+     * |Fn2     |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Fn2   |Fn1|
      * `-----------------------------------------------------------'
-     *       |Alt|Fn3  |       Space/Fn2       |Gui  |Alt|
+     *       |Alt|Fn3  |     Space/Shift       |Gui  |Alt|
      *       `-------------------------------------------'
      */
     KEYMAP(PWR, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, F13, F14,   \
            ESC, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSPC,       \
            LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,ENT,             \
-           LSFT,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,RSFT,FN1,             \
-                LALT,FN3,           FN2,                RGUI,RALT),
+           FN2, Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,FN2, FN1,             \
+                LALT,FN3,           FN4,                RGUI,RALT),
 
     /* Layer 1: Fn1 - modified HHKM mode
      * ,-----------------------------------------------------------.
@@ -114,10 +114,11 @@ const action_t fn_actions[] __attribute__ ((section (".keymap.fn_actions"))) = {
 #else
 const action_t fn_actions[] PROGMEM = {
 #endif
-    [0]  = ACTION_DEFAULT_LAYER_SET(0),         // Default layer
-    [1]  = ACTION_LAYER_MOMENTARY(1),           // FN1
-    [2]  = ACTION_LAYER_TAP_KEY(2,KC_SPC),      // FN2 
-    [3]  = ACTION_LAYER_MOMENTARY(3),           // FN3
+    [0]  = ACTION_DEFAULT_LAYER_SET(0),           // Default layer
+    [1]  = ACTION_LAYER_MOMENTARY(1),             // FN1
+    [2]  = ACTION_LAYER_TAP_KEY(2,KC_SPC),        // FN2 
+    [3]  = ACTION_LAYER_MOMENTARY(3),             // FN3
+    [4]  = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_SPC),
     [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
     [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
     [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
