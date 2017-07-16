@@ -28,8 +28,8 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      *       `-------------------------------------------'
      */
     KEYMAP(PWR, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, F13, F14,   \
-           ESC, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSPC,       \
-           LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,ENT,             \
+           ESC, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   NO,  NO,  BSPC,       \
+           LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,NO,  ENT,             \
            FN2, Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,FN2, FN1,             \
                 LALT,FN3,           FN4,                RGUI,RALT),
 
@@ -56,20 +56,20 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * ,-----------------------------------------------------------.
      * |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
      * |-----------------------------------------------------------|
-     * |  {  | 1 | 2 | 3 | * | / | \ | ! | @ | # | ' |   |   |  }  |
+     * |  {  | 1 | 2 | 3 | + | = | | | ! | @ | # | \ |   |   |  }  |
      * |-----------------------------------------------------------|
-     * |  (   | 4 | 5 | 6 | + | - | _ | $ | % | ^ | " |   |    )   |
+     * |  (   | 4 | 5 | 6 | _ | - | " | $ | % | ^ | : |   |    )   |
      * |-----------------------------------------------------------|
-     * |   [    | 7 | 8 | 9 | 0 | = | | | & | ` | ~ |   |  ]   |   |
+     * |   [    | 7 | 8 | 9 | 0 | * | ' | & | < | > | ? |  ]   |   |
      * `-----------------------------------------------------------'
-     *       |   |     |                       |     |   |
+     *       |   |     |                       |  `  | ~ |
      *       `-------------------------------------------'
      */
     KEYMAP(TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  \
-           FN21,1,   2,   3,   FN18,SLSH,BSLS,FN11,FN12,FN13,QUOT,TRNS,TRNS,FN22,       \
-           FN19,4,   5,   6,   FN23,MINS,FN24,FN14,FN15,FN16,FN25,TRNS,FN20,            \
-           LBRC,7,   8,   9,   0,   EQL, FN26,FN17,GRV, FN27,TRNS,RBRC,TRNS,            \
-                TRNS,TRNS,          TRNS,               TRNS,TRNS),
+           LBRC,1,   2,   3,   FN23,EQL, FN26,FN11,FN12,FN13,BSLS,TRNS,TRNS,RBRC,       \
+           FN19,4,   5,   6,   FN24,MINS,FN25,FN14,FN15,FN16,FN28,TRNS,FN20,            \
+           FN21,7,   8,   9,   0,   FN18,QUOT,FN17,FN29,FN30,FN31,FN22,TRNS,            \
+                TRNS,TRNS,          TRNS,               GRV, FN27),
 
     /* Layer 3: Fn3 - Navigation
      * ,-----------------------------------------------------------.
@@ -87,7 +87,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      */
     KEYMAP(TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  \
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,HOME,PGUP,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,       \
-           TRNS,FN28,FN29,FN30,FN31,TRNS,LEFT,DOWN,UP,  RGHT,TRNS,TRNS,TRNS,            \
+           TRNS,FN5, FN6, FN7, FN8, TRNS,LEFT,DOWN,UP,  RGHT,TRNS,TRNS,TRNS,            \
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,END, PGDN,TRNS,TRNS,TRNS,TRNS,TRNS,            \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 };
@@ -116,9 +116,13 @@ const action_t fn_actions[] PROGMEM = {
 #endif
     [0]  = ACTION_DEFAULT_LAYER_SET(0),           // Default layer
     [1]  = ACTION_LAYER_MOMENTARY(1),             // FN1
-    [2]  = ACTION_LAYER_TAP_KEY(2,KC_SPC),        // FN2 
+    [2]  = ACTION_LAYER_MOMENTARY(2),             // FN2 
     [3]  = ACTION_LAYER_MOMENTARY(3),             // FN3
     [4]  = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_SPC),
+    [5]  = ACTION_MACRO_TAP(KWM_WSPC_1),
+    [6]  = ACTION_MACRO_TAP(KWM_WSPC_2),
+    [7]  = ACTION_MACRO_TAP(KWM_WSPC_3),
+    [8]  = ACTION_MACRO_TAP(KWM_WSPC_4),
     [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
     [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
     [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
@@ -136,10 +140,10 @@ const action_t fn_actions[] PROGMEM = {
     [25] = ACTION_MODS_KEY(MOD_LSFT, KC_QUOT),
     [26] = ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),
     [27] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),
-    [28] = ACTION_MACRO_TAP(KWM_WSPC_1),
-    [29] = ACTION_MACRO_TAP(KWM_WSPC_2),
-    [30] = ACTION_MACRO_TAP(KWM_WSPC_3),
-    [31] = ACTION_MACRO_TAP(KWM_WSPC_4),
+    [28] = ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),
+    [29] = ACTION_MODS_KEY(MOD_LSFT, KC_COMM),
+    [30] = ACTION_MODS_KEY(MOD_LSFT, KC_DOT),
+    [31] = ACTION_MODS_KEY(MOD_LSFT, KC_SLSH),
 };
 
 
