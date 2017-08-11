@@ -18,28 +18,28 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * ,-----------------------------------------------------------.
      * |Pwr| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|F13|F14|
      * |-----------------------------------------------------------|
-     * |Esc  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|Backs|
+     * |  `  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|   |   |  \  |
      * |-----------------------------------------------------------|
-     * |Contro|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Enter   |
+     * |Contro|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|   |Enter   |
      * |-----------------------------------------------------------|
-     * |Fn2     |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Fn2   |Fn1|
+     * |Shift   |  Z|  X|  C|  V|  B|  N|  M|Fn3|  .|  /|Shift |Fn1|
      * `-----------------------------------------------------------'
-     *       |Alt|Fn3  |     Space/Shift       |Gui  |Alt|
+     *       |Alt|Gui  |     Fn2/Space         |Gui  |Alt|
      *       `-------------------------------------------'
      */
     KEYMAP(PWR, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, F13, F14,   \
-           ESC, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   NO,  NO,  BSPC,       \
+           GRV, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   NO,  NO,  BSLS,       \
            LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,NO,  ENT,             \
-           FN2, Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,FN2, FN1,             \
-                LALT,FN3,           FN4,                RGUI,RALT),
+           LSFT,Z,   X,   C,   V,   B,   N,   M,   FN3, DOT, SLSH,RSFT,FN1,             \
+                LALT,LGUI,          FN2,                RGUI,RALT),
 
     /* Layer 1: Fn1 - modified HHKM mode
      * ,-----------------------------------------------------------.
      * |   |Slk|Pus|   |   |   |   |Prv|Ply|Nxt|Mut|VoD|VoU|   |   |
      * |-----------------------------------------------------------|
-     * |Caps |   |   |   |   |   |   |   |   |   |   |   |   |Del  |
+     * |     |   |   |   |   |   |   |   |   |   |   |   |   |     |
      * |-----------------------------------------------------------|
-     * |Tab   |   |   |   |   |   |   |   |   |   |   |   |        |
+     * |Caps  |   |   |   |   |   |   |   |   |   |   |   |        |
      * |-----------------------------------------------------------|
      * |        |   |   |   |   |   |   |   |   |   |   |      |   |
      * `-----------------------------------------------------------'
@@ -47,61 +47,48 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      *       `-------------------------------------------'
      */
     KEYMAP(TRNS,SLCK,PAUS,TRNS,TRNS,TRNS,TRNS,MPRV,MPLY,MNXT,MUTE,VOLD,VOLU,TRNS,TRNS,  \
-           CAPS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,DELETE,     \
-           TAB ,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,            \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,       \
+           CAPS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,            \
            TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,            \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 
-    /* Layer 2: Fn2 - Numbers & Symbols
+    /* Layer 2: Fn2 - Numbers, Symbols & more Modifiers
      * ,-----------------------------------------------------------.
      * |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
      * |-----------------------------------------------------------|
-     * |  {  | 1 | 2 | 3 | + | = | | | ! | @ | # | \ |   |   |  }  |
+     * |  ~  | 1 | 2 | 3 | _ | + | ! | { | } | [ | ] |   |   |  |  |
      * |-----------------------------------------------------------|
-     * |  (   | 4 | 5 | 6 | _ | - | " | $ | % | ^ | : |   |    )   |
+     * |  ^   | 4 | 5 | 6 | = | - | ' | ( | ) |Bs | : |   |   $    |
      * |-----------------------------------------------------------|
-     * |   [    | 7 | 8 | 9 | 0 | * | ' | & | < | > | ? |  ]   |   |
+     * |  Tab   | 7 | 8 | 9 | 0 | * |Esc| " | < | > | ? |  &   | @ |
      * `-----------------------------------------------------------'
-     *       |   |     |                       |  `  | ~ |
+     *       |   |  %  |                       |  #  |   |
      *       `-------------------------------------------'
      */
     KEYMAP(TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  \
-           LBRC,1,   2,   3,   FN23,EQL, FN26,FN11,FN12,FN13,BSLS,TRNS,TRNS,RBRC,       \
-           FN19,4,   5,   6,   FN24,MINS,FN25,FN14,FN15,FN16,FN28,TRNS,FN20,            \
-           FN21,7,   8,   9,   0,   FN18,QUOT,FN17,FN29,FN30,FN31,FN22,TRNS,            \
-                TRNS,TRNS,          TRNS,               GRV, FN27),
+           FN27,1,   2,   3,   FN24,FN23,FN11,FN21,FN22,LBRC,RBRC,TRNS,TRNS,FN26,       \
+           FN16,4,   5,   6,   EQL, MINS,QUOT,FN19,FN20,BSPC,FN28,TRNS,FN14,            \
+           TAB, 7,   8,   9,   0,   FN18,ESC, FN25,FN29,FN30,FN31,FN17,FN12,            \
+                TRNS,FN15,          TRNS,               FN13, TRNS),
 
     /* Layer 3: Fn3 - Navigation
      * ,-----------------------------------------------------------.
      * |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
      * |-----------------------------------------------------------|
-     * |     |   |   |   |   |   |   |Hom|PgU|   |   |   |   |     |
+     * |     |   |   |   |   |   |   |   |   |   |   |   |   |     |
      * |-----------------------------------------------------------|
-     * |      |Ws1|Ws2|Ws3|Ws4|   |Lef|Dow|Up |Rig|   |   |        |
+     * |      |Lef|Dow|Up |Rig|   |   |   |   |   |   |   |        |
      * |-----------------------------------------------------------|
-     * |        |   |   |   |   |   |   |End|PgD|   |   |      |   |
+     * |        |   |   |   |   |   |   |   |   |   |   |      |   |
      * `-----------------------------------------------------------'
      *       |   |     |                       |     |   |
      *       `-------------------------------------------'
-     * Ws: Workspace
      */
     KEYMAP(TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,HOME,PGUP,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,       \
-           TRNS,FN5, FN6, FN7, FN8, TRNS,LEFT,DOWN,UP,  RGHT,TRNS,TRNS,TRNS,            \
-           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,END, PGDN,TRNS,TRNS,TRNS,TRNS,TRNS,            \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,       \
+           TRNS,LEFT,DOWN,UP,  RGHT,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,            \
+           TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,            \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
-};
-
-
-
-/*
- * id for user defined funtions
- */
-enum macro_id {
-    KWM_WSPC_1,
-    KWM_WSPC_2,
-    KWM_WSPC_3,
-    KWM_WSPC_4,
 };
 
 
@@ -115,14 +102,9 @@ const action_t fn_actions[] __attribute__ ((section (".keymap.fn_actions"))) = {
 const action_t fn_actions[] PROGMEM = {
 #endif
     [0]  = ACTION_DEFAULT_LAYER_SET(0),           // Default layer
-    [1]  = ACTION_LAYER_MOMENTARY(1),             // FN1
-    [2]  = ACTION_LAYER_MOMENTARY(2),             // FN2 
-    [3]  = ACTION_LAYER_MOMENTARY(3),             // FN3
-    [4]  = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_SPC),
-    [5]  = ACTION_MACRO_TAP(KWM_WSPC_1),
-    [6]  = ACTION_MACRO_TAP(KWM_WSPC_2),
-    [7]  = ACTION_MACRO_TAP(KWM_WSPC_3),
-    [8]  = ACTION_MACRO_TAP(KWM_WSPC_4),
+    [1]  = ACTION_LAYER_MOMENTARY(1),             // modified HHKB mode
+    [2]  = ACTION_LAYER_TAP_KEY(2, KC_SPC),       // Numbers & Symbols
+    [3]  = ACTION_LAYER_TAP_KEY(3, KC_COMM),      // Navigation
     [11] = ACTION_MODS_KEY(MOD_LSFT, KC_1),
     [12] = ACTION_MODS_KEY(MOD_LSFT, KC_2),
     [13] = ACTION_MODS_KEY(MOD_LSFT, KC_3),
@@ -145,30 +127,3 @@ const action_t fn_actions[] PROGMEM = {
     [30] = ACTION_MODS_KEY(MOD_LSFT, KC_DOT),
     [31] = ACTION_MODS_KEY(MOD_LSFT, KC_SLSH),
 };
-
-
-/*
- * Macro definition
- */
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
-    switch (id) {
-        case KWM_WSPC_1:
-            return (record->event.pressed ?
-                MACRO( D(LCTL), D(S), U(LCTL), U(S), I(25), D(1), U(1), END ) :
-                MACRO_NONE);
-        case KWM_WSPC_2:
-            return (record->event.pressed ?
-                MACRO( D(LCTL), D(S), U(LCTL), U(S), I(25), D(2), U(2), END ) :
-                MACRO_NONE);
-        case KWM_WSPC_3:
-            return (record->event.pressed ?
-                MACRO( D(LCTL), D(S), U(LCTL), U(S), I(25), D(3), U(3), END ) :
-                MACRO_NONE);
-        case KWM_WSPC_4:
-            return (record->event.pressed ?
-                MACRO( D(LCTL), D(S), U(LCTL), U(S), I(25), D(4), U(4), END ) :
-                MACRO_NONE);
-    }
-    return MACRO_NONE;
-}

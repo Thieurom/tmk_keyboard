@@ -37,11 +37,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 /* key combination for command */
-#define IS_COMMAND() (keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT))) 
+#define IS_COMMAND() (keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
 
 
 /* period of tapping(ms) */
-#define TAPPING_TERM    300
+#define TAPPING_TERM    150
 /* tap count needed for toggling a feature */
 #define TAPPING_TOGGLE  5
 /* Oneshot timeout(ms) */
